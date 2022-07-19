@@ -1,0 +1,34 @@
+<div class="calculator">
+
+  <input type="text" class="calc_inputDisplay z-depth-1" value={{inputDisplay}} disabled />
+  <input type="text" class="calc_mainDisplay z-depth-1" value={{mainDisplay}} disabled placeholder="0"/>
+
+  <div class="calc_keys">
+
+    <button type="button" class="operator btn btn-info" (click)="keyPress('+')" value="+">+</button>
+    <button type="button" class="operator btn btn-info" (click)="keyPress('-')" value="-">-</button>
+    <button type="button" class="operator btn btn-info" (click)="keyPress('*')" value="*">&times;</button>
+    <button type="button" class="operator btn btn-info" (click)="keyPress('/')" value="/">&divide;</button>
+
+    <button type="button" class="btn btn-light" (click)="keyPress('7')">7</button>
+    <button type="button" class="btn btn-light" (click)="keyPress('8')">8</button>
+    <button type="button" class="btn btn-light" (click)="keyPress('9')">9</button>
+
+    <button type="button" class="btn btn-light" (click)="keyPress('4')">4</button>
+    <button type="button" class="btn btn-light" (click)="keyPress('5')">5</button>
+    <button type="button" class="btn btn-light" (click)="keyPress('6')">6</button>
+
+    <button type="button" class="btn btn-light" (click)="keyPress('1')">1</button>
+    <button type="button" class="btn btn-light" (click)="keyPress('2')">2</button>
+    <button type="button" class="btn btn-light" (click)="keyPress('3')">3</button>
+
+    <button type="button" class="btn btn-light" (click)="keyPress('0')">0</button>
+    <button type="button" class="decimal btn btn-secondary" (click)="keyPress('.')">.</button>
+    <button type="button" class="all-clear btn btn-danger btn-sm" (click)="clear()">C</button>
+
+    <button type="button" class="equal-sign operator btn btn-success" (click)="keyPress('=')">=</button>
+
+  </div>
+</div>
+
+<router-outlet></router-outlet>
