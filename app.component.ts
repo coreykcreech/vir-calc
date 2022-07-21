@@ -9,39 +9,74 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'viiCalc'
   inputDisplay: string = ''
-  mainDisplay: string = ''
+  resultDisplay: string = ''
   operand1: number = 0
   operand2!: number
   operator: string = ''
   operatorSet = false
-  // lastKey = this.inputDisplay[this.inputDisplay.length - 1]
-
 
   keyPress(key:string) {
-    const lastKey = this.inputDisplay[this.inputDisplay.length - 1]
-    if (lastKey === '+' || lastKey === '-' || lastKey === '*' || lastKey === '/') {
-      this.operator = key
-      this.operatorSet = true
-      this.operand1 = parseFloat(this.inputDisplay)
-      console.log(this.operand1)
-    }
     if (key === '0') {
       if (this.inputDisplay === '') {
         return
       }
     }
     if (key === '.') {
-      if (this.mainDisplay.includes('.')) {
+      if (this.inputDisplay.includes('.')) {
         return
       }
     }
-    if (this.operatorSet = true) {
-      this.operand2 = parseFloat(this.inputDisplay.split(this.operator)[1])}
-      this.inputDisplay += key
-      this.mainDisplay += key
-      console.log(this.operand1)
-      console.log(this.operand2)
+    if (key === '/' || key === '*' || key === '-' || key === '+') {
+      const lastKey = this.inputDisplay[this.inputDisplay.length - 1];
+      if (lastKey === '/' || lastKey === '*' || lastKey === '-' || lastKey === '+') {
+        this.operatorSet = true;
+      }
+      if ((this.operatorSet) || (this.inputDisplay === '')) {
+        return;
+      }
+      this.operand1 = parseFloat(this.inputDisplay);
+      this.operator = key;
+      this.operatorSet = true;
+
+      console.log(`Operand one is ${this.operand1}`)
+      console.log(`Operand two is ${this.operand2}`)
+      console.log(`The operator is ${this.operator}`)
+      console.log(`Operator set: ${this.operatorSet}`)
+
     }
+    this.inputDisplay += key;
+
+    console.log(this.operand1)
+    console.log(this.operand2)
+    console.log(this.operator)
+    console.log(this.operatorSet)
+
+  }
+
+    // const lastKey = this.inputDisplay[this.inputDisplay.length - 1]
+    // console.log(lastKey)
+    // if (lastKey === '+' || lastKey === '-' || lastKey === '*' || lastKey === '/') {
+    //   this.operator = key
+    //   this.operatorSet = true
+    //   this.operand1 = parseFloat(this.inputDisplay)
+    //   console.log(this.operand1)
+    // }
+    // if (key === '0') {
+    //   if (this.inputDisplay === '') {
+    //     return
+    //   }
+    // }
+    // if (key === '.') {
+    //   if (this.resultDisplay.includes('.')) {
+    //     return
+    //   }
+
+
+    // if (this.operatorSet = true) {
+      //   // this.resultDisplay = '';
+    //   this.inputDisplay += key;
+    //   // this.resultDisplay += key;
+    // }
 
   // operatorPress(op: string) {
   //   const lastKey = this.inputDisplay[this.inputDisplay.length - 1]
@@ -51,7 +86,7 @@ export class AppComponent {
   //     this.operatorSet = true
   //   }
 
-  //   this.operand1 = parseFloat(this.mainDisplay)
+  //   this.operand1 = parseFloat(this.resultDisplay)
   //   this.operatorSet = true
 
   //   console.log(this.operand1)
@@ -61,7 +96,7 @@ export class AppComponent {
 
   clear() {
     this.inputDisplay = ''
-    this.mainDisplay = ''
+    this.resultDisplay = ''
     this.operand1 = 0;
     this.operator = ''
     console.log(this.operand1)
