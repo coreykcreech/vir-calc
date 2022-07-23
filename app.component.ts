@@ -53,55 +53,36 @@ export class AppComponent {
 
   }
 
-    // const lastKey = this.inputDisplay[this.inputDisplay.length - 1]
-    // console.log(lastKey)
-    // if (lastKey === '+' || lastKey === '-' || lastKey === '*' || lastKey === '/') {
-    //   this.operator = key
-    //   this.operatorSet = true
-    //   this.operand1 = parseFloat(this.inputDisplay)
-    //   console.log(this.operand1)
-    // }
-    // if (key === '0') {
-    //   if (this.inputDisplay === '') {
-    //     return
-    //   }
-    // }
-    // if (key === '.') {
-    //   if (this.resultDisplay.includes('.')) {
-    //     return
-    //   }
-
-
-    // if (this.operatorSet = true) {
-      //   // this.resultDisplay = '';
-    //   this.inputDisplay += key;
-    //   // this.resultDisplay += key;
-    // }
-
-  // operatorPress(op: string) {
-  //   const lastKey = this.inputDisplay[this.inputDisplay.length - 1]
-
-  //   if (lastKey === '+' || lastKey === '-' || lastKey === '*' || lastKey === '/') {
-  //     this.operator = op
-  //     this.operatorSet = true
-  //   }
-
-  //   this.operand1 = parseFloat(this.resultDisplay)
-  //   this.operatorSet = true
-
-  //   console.log(this.operand1)
-  //   console.log(this.operand2)
-  //   console.log(this.operator)
-  // }
-
   clear() {
     this.inputDisplay = ''
     this.resultDisplay = ''
     this.operand1 = 0;
     this.operator = ''
+    this.operatorSet = false
     console.log(this.operand1)
     console.log(this.operand2)
     console.log(this.operator)
+  }
+
+  equals() {
+    this.operand2 = parseFloat(this.inputDisplay.split(this.operator)[1])
+    console.log(this.operand2)
+
+    if (this.operator === "+") {
+      this.resultDisplay = (this.operand1 + this.operand2).toString()
+    }
+    else if (this.operator === "+") {
+      this.resultDisplay = (this.operand1 + this.operand2).toString()
+    }
+    else if (this.operator === "-") {
+      this.resultDisplay = (this.operand1 - this.operand2).toString()
+    }
+    else if (this.operator === "*") {
+      this.resultDisplay = (this.operand1 * this.operand2).toString()
+    }
+    else if (this.operator === "/") {
+      this.resultDisplay = (this.operand1 / this.operand2).toString()
+    }
   }
 
 }
