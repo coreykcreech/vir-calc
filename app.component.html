@@ -1,7 +1,7 @@
 <div class="calculator">
 
   <input type="text" class="calc_inputDisplay z-depth-1" value={{inputDisplay}} disabled />
-  <input type="text" class="calc_mainDisplay z-depth-1" value={{mainDisplay}} disabled placeholder="0"/>
+  <input type="text" class="calc_resultDisplay z-depth-1" value={{resultDisplay}} disabled placeholder="0"/>
 
   <div class="calc_keys">
 
@@ -26,7 +26,7 @@
     <button type="button" class="decimal btn btn-secondary" (click)="keyPress('.')">.</button>
     <button type="button" class="all-clear btn btn-danger btn-sm" (click)="clear()">C</button>
 
-    <button type="button" class="equal-sign operator btn btn-success" (click)="keyPress('=')">=</button>
+    <button type="button" class="equal-sign operator btn btn-success" (click)="equals()">=</button>
 
   </div>
 </div>
