@@ -45,12 +45,6 @@ export class AppComponent {
       this.operand1 = parseFloat(this.inputDisplay)
       this.operator = key
       this.operatorSet = true
-
-      // console.log(`Operand one is ${this.operand1}`)
-      // console.log(`Operand two is ${this.operand2}`)
-      // console.log(`The operator is ${this.operator}`)
-      // console.log(`Operator set: ${this.operatorSet}`)
-
     }
     this.inputDisplay += key
   }
@@ -69,28 +63,23 @@ export class AppComponent {
 
     if (this.operator === "+") {
       this.resultDisplay = (this.operand1 + this.operand2).toString()
-      this.result = parseFloat(this.resultDisplay)
-    }
-    else if (this.operator === "+") {
-      this.resultDisplay = (this.operand1 + this.operand2).toString()
-      this.result = parseFloat(this.resultDisplay)
     }
     else if (this.operator === "-") {
       this.resultDisplay = (this.operand1 - this.operand2).toString()
-      this.result = parseFloat(this.resultDisplay)
     }
     else if (this.operator === "*") {
       this.resultDisplay = (this.operand1 * this.operand2).toString()
-      this.result = parseFloat(this.resultDisplay)
     }
     else if (this.operator === "/") {
       this.resultDisplay = (this.operand1 / this.operand2).toString()
-      this.result = parseFloat(this.resultDisplay)
-      this.operand1 = this.result
     }
     this.operand1 = parseFloat(this.resultDisplay)
-    console.log(this.operand1)
     this.operatorSet = false
   }
+
+  // console.log(`Operand one is ${this.operand1}`)
+  // console.log(`Operand two is ${this.operand2}`)
+  // console.log(`The operator is ${this.operator}`)
+  // console.log(`Operator set: ${this.operatorSet}`)
 
 }
