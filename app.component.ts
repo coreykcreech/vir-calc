@@ -12,6 +12,7 @@ export class AppComponent {
   resultDisplay: string = ''
   operand1: number = 0
   operand2!: number
+  result!: number
   operator: string = ''
   operatorSet = false
 
@@ -28,20 +29,27 @@ export class AppComponent {
     }
     if (key === '/' || key === '*' || key === '-' || key === '+') {
       const lastKey = this.inputDisplay[this.inputDisplay.length - 1]
+      console.log(`The key is ${key}`)
+      console.log(`The lastKey is ${lastKey}`)
+      // If a number is pressed and the operator is chosen, does not allow new operator to be pressed.
       if (lastKey === '/' || lastKey === '*' || lastKey === '-' || lastKey === '+') {
         this.operatorSet = true
+        console.log("Testing Operators")
+        console.log(`The operator is ${this.operator}`)
       }
       if ((this.operatorSet) || (this.inputDisplay === '')) {
+        this.operator = lastKey
+        console.log(`The operator is ${this.operator}`)
         return
       }
       this.operand1 = parseFloat(this.inputDisplay)
       this.operator = key
       this.operatorSet = true
 
-      console.log(`Operand one is ${this.operand1}`)
-      console.log(`Operand two is ${this.operand2}`)
-      console.log(`The operator is ${this.operator}`)
-      console.log(`Operator set: ${this.operatorSet}`)
+      // console.log(`Operand one is ${this.operand1}`)
+      // console.log(`Operand two is ${this.operand2}`)
+      // console.log(`The operator is ${this.operator}`)
+      // console.log(`Operator set: ${this.operatorSet}`)
 
     }
     this.inputDisplay += key
@@ -61,20 +69,27 @@ export class AppComponent {
 
     if (this.operator === "+") {
       this.resultDisplay = (this.operand1 + this.operand2).toString()
+      this.result = parseFloat(this.resultDisplay)
     }
     else if (this.operator === "+") {
       this.resultDisplay = (this.operand1 + this.operand2).toString()
+      this.result = parseFloat(this.resultDisplay)
     }
     else if (this.operator === "-") {
       this.resultDisplay = (this.operand1 - this.operand2).toString()
+      this.result = parseFloat(this.resultDisplay)
     }
     else if (this.operator === "*") {
       this.resultDisplay = (this.operand1 * this.operand2).toString()
+      this.result = parseFloat(this.resultDisplay)
     }
     else if (this.operator === "/") {
       this.resultDisplay = (this.operand1 / this.operand2).toString()
+      this.result = parseFloat(this.resultDisplay)
+      this.operand1 = this.result
     }
     this.operand1 = parseFloat(this.resultDisplay)
+    console.log(this.operand1)
     this.operatorSet = false
   }
 
