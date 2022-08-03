@@ -17,11 +17,13 @@ export class AppComponent {
   operatorSet = false
 
   keyPress(key:string) {
+    // Does not allow zero to begin the number in the calculator, else could have 0003 as a number, which is wrong.
     if (key === '0') {
       if (this.inputDisplay === '') {
         return
       }
     }
+    // Checks to see if the input already has a decimal, if so do not allow another one.
     if (key === '.') {
       if (this.inputDisplay.includes('.')) {
         return
@@ -58,8 +60,19 @@ export class AppComponent {
     this.operatorSet = false
   }
 
+  // NOTE - Right now I cannot rapid fire equations. Ideally, code will take the result and set it to operand1 when
+  // you press equals (currently does this). Then, the next input would be set to operand2. But, this is going to 
+  // require a bit of change to the existing code to figure out if there was a result, which I started working on.
+
+  // You can clear after each equation to start a new equation. But, that's not how it SHOULD work. This is an
+  // improvement to story requirements, and as of right now the calculator works as requested.
+
   equals() {
     this.operand2 = parseFloat(this.inputDisplay.split(this.operator)[1])
+    console.log(`Operand one is ${this.operand1}`)
+    console.log(`Operand two is ${this.operand2}`)
+    console.log(`The operator is ${this.operator}`)
+    console.log(`Operator set: ${this.operatorSet}`)
 
     if (this.operator === "+") {
       this.resultDisplay = (this.operand1 + this.operand2).toString()
@@ -74,12 +87,14 @@ export class AppComponent {
       this.resultDisplay = (this.operand1 / this.operand2).toString()
     }
     this.operand1 = parseFloat(this.resultDisplay)
+    this.operator = ""
     this.operatorSet = false
+    // Separating the logs so I know where things are actually changing and how. This would be removed when finished.
+    console.log(`SOLVED - Operand one is ${this.operand1}`)
+    console.log(`SOLVED - Operand two is ${this.operand2}`)
+    console.log(`SOLVED - The operator is ${this.operator}`)
+    console.log(`SOLVED - Operator set: ${this.operatorSet}`)
   }
 
-  // console.log(`Operand one is ${this.operand1}`)
-  // console.log(`Operand two is ${this.operand2}`)
-  // console.log(`The operator is ${this.operator}`)
-  // console.log(`Operator set: ${this.operatorSet}`)
 
 }
